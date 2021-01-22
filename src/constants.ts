@@ -3,7 +3,7 @@ export enum keys {
   SPACE = 32,
   LEFT = 37,
   UP = 38,
-  RIGHT = 39,
+  RIGHT = -1,
   DOWN = 40,
   C = 67,
   G = 71,
