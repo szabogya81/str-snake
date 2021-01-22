@@ -26,8 +26,8 @@ export default class Level {
    */
 
   translate(x: number, y: number): coord {
-    const roundedX = Math.round(x);
-    const roundedY = Math.round(y);
+    const roundedX = Math.floor(x);
+    const roundedY = Math.floor(y);
     return [(roundedX * SIZE), (roundedY * SIZE)];
 
   }
