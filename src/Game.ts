@@ -235,12 +235,17 @@ export default class Game extends BaseGame {
 
   updateScore (won: number): number {
     if (this.noClip === true) {
+      this.checkScoreLimit ();
       return this.score;
     }
 
     this.score += won;
-
+    this.checkScoreLimit ();
     return this.score;
+  }
+
+  checkScoreLimit (): void {
+    this.score >= 20 ? this.score = 0 : this.score;
   }
 
   showScore (): void {
