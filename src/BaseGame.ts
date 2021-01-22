@@ -4,6 +4,24 @@ import Piece from "./Piece";
 import Utils from "./Utils";
 
 export default abstract class BaseGame implements IBaseGame {
+    head: Piece;
+
+    tail: Piece;
+
+    food: Piece | null;
+
+    goldenApple: Piece | null;
+
+    length: number;
+
+    growth: number;
+
+    score: number;
+
+    currentLevel: Level | null;
+
+    garden: HTMLDivElement;
+
     protected moving: boolean = false;
 
     protected paused: boolean = false;
@@ -18,7 +36,7 @@ export default abstract class BaseGame implements IBaseGame {
 
     /**
      * @returns {number}
-     * Egy random számot szorozz meg a this.level.length -el, 
+     * Egy random számot szorozz meg a this.levels.length -el, 
      * majd kerekítsd lefelé, ez lesz az index.
      * Majd térj vissza a this.levels tömbnek ezzel az indexével.
      */
@@ -26,9 +44,9 @@ export default abstract class BaseGame implements IBaseGame {
 
     /**
      * @returns {boolean}
-     * 1. hozz létre egy chance neű változót 5 értékkel
+     * 1. hozz létre egy chance nevű változót 5 értékkel
      * 2. hozz létre egy pick nevű változót, értéke random szám szorozva 100 -al
-     * 3. térj vissza true értékkel, ha a pick kisebb int a chance
+     * 3. térj vissza true értékkel, ha a pick kisebb mint a chance
      */
     abstract mayIHaveGoldenApple(): boolean;
 

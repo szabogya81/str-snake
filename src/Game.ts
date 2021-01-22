@@ -9,15 +9,15 @@ import BaseGame from './BaseGame';
 
 /**
  * FELADAT!
- * A feladat két lépésbő áll:
+ * A feladat két lépésből áll:
  * 1. Pótold a hiányzó tulajdonságokat a BaseGame osztályban az IBaseGame
- * interfész alpján.
+ * interfész alapján.
  * 2. A BaseGame osztályban található leírások alapján pótold ebben a Game 
  * osztályban a hiányzó metódusokat. Úgy találod meg őket, hogy abstract 
  * metódusként vannak definiálva.
  */
 export default class Game extends BaseGame {
-
+  
   constructor (private levels: Level[]) {
     super();
     this.head = new Piece({ x: 80, y: 80, type: 'head' });
@@ -471,5 +471,25 @@ export default class Game extends BaseGame {
       hitbox.style.left = `${x}px`;
       this.garden.append(hitbox);
     });
+  }
+
+  getRandomLevel(): Level {
+    const levelIndex: number = Math.floor(Math.random() * this.levels.length);
+    return this.levels[levelIndex];
+  }
+
+  mayIHaveGoldenApple(): boolean {
+    const chance: number = 5;
+    const pick: number = Math.random() * 100;
+    return pick < chance;
+  }
+  
+  removeGrid(): void {
+    const grids: Element[] = 
+      Array.from(document.querySelectorAll(".vertical-grid, .horizontal-grid"));
+
+    grids.forEach(grid => Utils.removeNode(grid));
+
+    this.gridVisible = false;
   }
 }
