@@ -12,11 +12,11 @@ export default abstract class BaseGame implements IBaseGame {
 
     goldenApple: Piece | null;
 
-    length: number;
+    length: number = 0;
 
-    growth: number;
+    growth: number = 0;
 
-    score: number;
+    score: number = 0;
 
     currentLevel: Level | null;
 
